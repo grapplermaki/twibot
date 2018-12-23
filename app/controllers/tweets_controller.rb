@@ -11,20 +11,29 @@ class TweetsController < ApplicationController
     end
 
     def post
-        tweet = Tweet.order("RANDOM()").first
+        #d = Date.today
+        #tweet = Tweet.order("RANDOM()").first
+        #tweet = Tweet.where("SELECT text from tweets where id = '1'" )
+        #tweet = Tweet.where("id = '3'" ).first
+        #tweet = Tweet.where("day = strftime('%m月%d日', 'now')").first
+        tweet = Tweet.where("id = '' ").first
+        #tweet = Tweet.where("day = strftime('%m%d', '2018-12-22')").first
+        #tweet = Tweet.order("SELECT text from tweets where day = strftime('%m月%d日', 'now');").first
         status = tweet.text
         #media = open(tweet.image)
         #@client.update_with_media(status, media)
-        @client.update(status)
+        #response = @client.update(status)
+        response = @client.update(status)
+        Rails.logger.debug response
         redirect_to :root
     end
     
     def twitter_client
         @client = Twitter::REST::Client.new do |config|
-          config.consumer_key = "m9P1E2U02U7mLGnO3f1KY9MbQ"
-          config.consumer_secret = "iL0rB8kdgt2mVF8JELtyeZAhbBqazMmvhH6217VAZSwBkfyNI4"
-          config.access_token = "1031386587328798722-6P8FACV9QwvpV16b4Wl4KXFFCU8GHI"
-          config.access_token_secret = "uPPxW3QYONMxdxegR5uVcwZuIxXzCo8T8OcqzjDybYcle"
+          config.consumer_key = ENV['CONSUMER_KEY'] 
+          config.consumer_secret = ENV['CONSUMER_SECRET']
+          config.access_token = ENV['ACCESS_TOKEN']
+          config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
         end
     end
 
