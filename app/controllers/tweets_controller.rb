@@ -17,6 +17,9 @@ class TweetsController < ApplicationController
         tweet = Tweet.where(day: t.tomorrow.strftime("%m%d")).first
         tweet2 = Tweet.where(day: t.since(7.days).strftime("%m%d")).first
         tweet3 = Tweet.where(day: t.next_month.strftime("%m%d")).first
+        puts "#{tweet}"
+        puts "#{tweet2}"
+        puts "#{tweet3}"
         status = tweet.text
         status2 = tweet2.text
         status3 = tweet3.text
