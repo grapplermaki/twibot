@@ -67,3 +67,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'twitter'
 
 gem 'whenever', :require => false
+
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+# gem 'gem-that-requires-env-variables'
+

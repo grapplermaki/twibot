@@ -12,6 +12,7 @@ class TweetsController < ApplicationController
 
     def post
         t = Time.current
+        puts '#{t}'
         #tweet = Tweet.where(day: Date.today.strftime("%m%d")).first
         tweet = Tweet.where(day: t.tomorrow.strftime("%m%d")).first
         tweet2 = Tweet.where(day: t.since(7.days).strftime("%m%d")).first
