@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
     end
 
     def post
-        t = Time.current
+        t = Datetime.zone
         puts "#{t}"
         #tweet = Tweet.where(day: Date.today.strftime("%m%d")).first
         tweet = Tweet.where(day: t.tomorrow.strftime("%m%d")).first

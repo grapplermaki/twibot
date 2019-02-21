@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -10,6 +11,9 @@ module Twibot
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.time_zone = 'Tokyo'
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -19,9 +23,11 @@ module Twibot
 end
 
 # /config/application.rb
-module Twibot
-  class Application < Rails::Application
-    config.autoload_paths += %W(#{config.root}/lib)
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
-  end
-end
+#module Twibot
+#  class Application < Rails::Application
+#    config.autoload_paths += %W(#{config.root}/lib)
+#    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+#  end
+#end
+
+
